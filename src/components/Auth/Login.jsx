@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Login = () => {
+const Login = ({handleLogin}) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -8,15 +8,17 @@ const Login = () => {
     const submitHandler = (e) => {
         e.preventDefault();
 
+        handleLogin(email,password);
+
         setEmail("");
         setPassword("");
         
     }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-      <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
-        <h1 className="text-3xl font-bold text-slate-900 mb-10 text-center">
+    <div className="min-h-screen flex items-center justify-center bg-[#000000] px-4">
+      <div className="w-full max-w-md bg-[#1c1c1c] rounded-xl shadow-lg p-8">
+        <h1 className="text-3xl font-bold text-white mb-10 text-center">
           Sign in
         </h1>
 
@@ -25,7 +27,7 @@ const Login = () => {
           <div>
             <label
               htmlFor="email"
-              className="mb-2 text-slate-900 font-medium text-sm inline-block"
+              className="mb-2 text-gray-300 font-medium text-sm inline-block"
             >
               Email
             </label>
@@ -38,7 +40,7 @@ const Login = () => {
               onChange={(e) => {setEmail(e.target.value)}}
               placeholder="john@example.com"
               required
-              className="w-full rounded-md border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20"
+              className="w-full placeholder:text-gray-400 rounded-md border border-gray-300 px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20"
             />
           </div>
 
@@ -46,7 +48,7 @@ const Login = () => {
           <div>
             <label
               htmlFor="password"
-              className="mb-2 text-slate-900 font-medium text-sm inline-block"
+              className="mb-2 text-gray-300 font-medium text-sm inline-block"
             >
               Password
             </label>
@@ -59,14 +61,14 @@ const Login = () => {
               onChange={(e)=>{setPassword(e.target.value)}}
               placeholder="••••••••"
               required
-              className="w-full rounded-md border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20"
+              className="w-full placeholder:text-gray-400 rounded-md border border-slate-300 px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20"
             />
           </div>
 
           {/* Sign In Button */}
           <button
             type="submit"
-            className="w-full rounded-md bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+            className="w-full rounded-md bg-green-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-green-800"
           >
             Sign in
           </button>
