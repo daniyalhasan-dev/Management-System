@@ -11,11 +11,23 @@ const App = () => {
 
     const authData = useContext(AuthContext)
 
+    // useEffect(()=>{
+
+    //   if (authData) {
+    //     const LoggedInUser = localStorage.getItem("LoggedInUser")
+    //     if (LoggedInUser) {
+    //       setUser(localStorage.role)
+    //     }
+    //   }
+    // },[authData])
+
   const handleLogin = (email,password) => {
     if (email == "daniyalhasan223@gmail.com" && password == "123") {
       setUser("admin")
+      localStorage.setItem('LoggedInUser', JSON.stringify({role:"admin"}))
     } else if (authData && authData.employees.find((e)=>email == e.email && password == e.password)) {
       setUser("employee")
+            localStorage.setItem('LoggedInUser', JSON.stringify({role:"employee"}))
         } else {
       alert("Error");
     }
