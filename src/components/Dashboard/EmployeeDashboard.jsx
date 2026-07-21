@@ -2,12 +2,12 @@ import Header from "../other/Header";
 import TaskListNumbers from "../other/TaskListNumbers";
 import TaskList from '../TaskList/TaskList'
 
-const EmployeeDashboard = () => {
+const EmployeeDashboard = ({data}) => {
   return (
     <>
-      <Header />
-      <TaskListNumbers />
-      <TaskList/>
+      <Header data= {data}/>
+      <TaskListNumbers data= {data}/>
+      <TaskList data= {data}/>
     </>
   );
 };

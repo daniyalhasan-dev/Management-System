@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { use, useContext, useEffect, useState } from "react";
 import Login from "./components/Auth/Login";
 import EmployeeDashboard from "./components/Dashboard/EmployeeDashboard";
 import TaskList from "./components/TaskList/TaskList";
@@ -8,7 +8,7 @@ import AuthProvider, { AuthContext } from "./context/AuthProvider";
 
 const App = () => {
   const [user, setUser] = useState(null);
-  const [LoggenInUSerData, setLoggenInUSerData] = useState(null);
+  const [LoggedInUSerData, setLoggedInUSerData] = useState(null);
 
     const authData = useContext(AuthContext)
 
@@ -30,7 +30,7 @@ const App = () => {
       const employee = authData.employees.find((e)=>email == e.email && password == e.password);
       if (employee) {
         setUser("employee")
-        LoggenInUSerData(employee);
+        setLoggedInUSerData(employee);
         localStorage.setItem('LoggedInUser', JSON.stringify({role:"employee"}))
       }
         } else {
@@ -41,7 +41,7 @@ const App = () => {
   return(
     <>
         {!user ? <Login handleLogin={handleLogin} /> : ""}
-        {user == 'admin' ? <AdminDashboard /> : <EmployeeDashboard />}
+        {user == 'admin' ? <AdminDashboard /> : (user == 'employee' ? <EmployeeDashboard data={LoggedInUSerData} /> : null)}
     </>
   );
 };
