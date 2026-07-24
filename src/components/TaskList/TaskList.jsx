@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TaskList = () => {
+const TaskList = ({data}) => {
   return (
     <div>
       <div className="min-h-screen bg-[#111111] text-white p-8">
